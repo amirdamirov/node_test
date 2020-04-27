@@ -34,6 +34,7 @@ pipeline {
                       sh("HOME=$WORKSPACE kubectl apply -f srv.yml")
                       sh("HOME=$WORKSPACE kubectl get deploy")
                       
+
                     
                    }
                 }
