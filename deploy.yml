@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: node
-        image: gcr.io/amir-265013/node-app:master
+        image: gcr.io/varovskoy/node-app:master
         ports:
         - containerPort: 3000
