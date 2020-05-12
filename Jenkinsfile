@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
     
@@ -12,16 +13,13 @@ pipeline {
             steps {
                 script {
                     if (BRANCH_NAME ==~ /test/) {
-                        withEnv(["NODE_ENV=PRODUCTION"]) {
-                            sh "echo ${NODE_ENV}"
-                        }
+                      
+                        environment { NODE_ENV = 'production'}
                         
-                        //environment {
-                        //    NODE_ENV = 'production'      
-                        //    }
+                        sh "echo ${NODE_ENV}"
+
                         }
                     }
-                    //sh "echo ${NODE_ENV}"
                 }
             }
     }
