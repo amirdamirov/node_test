@@ -3,15 +3,22 @@ pipeline {
     
     environment {
          BRANCH_NAME_NORMALIZED = "${BRANCH_NAME.toLowerCase().replace("/", "_")}"
+         NODE_ENV = 'development'
+
            }
     
     stages {
-        stage('Build') {
+       stage ('NPM build') {
             steps {
-                sh 'echo ${BRANCH_NAME}'
-                
+                script {
+                    if (BRANCH_NAME == 'test') {
+                        environment {
+                            NODE_ENV = 'development'      
+                            }
+                        }
+                    }
+                    sh "echo ${NODE_ENV}"
+                }
             }
-        }
     }
 }
-
