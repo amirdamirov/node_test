@@ -12,9 +12,10 @@ pipeline {
             steps {
                 script {
                     if (BRANCH_NAME ==~ /test/) {
-                        environment {
-                            NODE_ENV = 'production'      
-                            }
+                        withEnv(["NODE_ENV=PRODUCTION"])
+                        //environment {
+                        //    NODE_ENV = 'production'      
+                        //    }
                         }
                     }
                     sh "echo ${NODE_ENV}"
