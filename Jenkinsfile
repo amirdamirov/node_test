@@ -11,7 +11,7 @@ pipeline {
        stage ('NPM build') {
             steps {
                 script {
-                    if (BRANCH_NAME ==~ /test) {
+                    if (BRANCH_NAME ==~ /test/) {
                         environment {
                             NODE_ENV = 'production'      
                             }
