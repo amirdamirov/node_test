@@ -13,7 +13,7 @@ pipeline {
                 script {
                     if (BRANCH_NAME == 'test') {
                         environment {
-                            NODE_ENV = 'development'      
+                            NODE_ENV = 'production'      
                             }
                         }
                     }
