@@ -1,0 +1,16 @@
+{
+  "name": "sw_chfi",
+  "list": [
+    "node_modules/@skywind-group/sw-slot-game-core/lib/skywind/slot/game.js",
+    "node_modules/@skywind-group/sw-slot-game-core/lib/skywind/slot/rules/freespins.js",
+    "node_modules/@skywind-group/sw-slot-game-core/lib/skywind/slot/rules/freeSpinsAdapters.js",
+    "node_modules/@skywind-group/sw-slot-game-core/lib/skywind/utils/slotUtils.js",
+    "lib/game/game.js",
+    "lib/game/rules/mysteryWildRule.js",
+    "lib/game/rules/bonusRule.js",
+    "lib/game/rules/blankReplacementRule.js",
+    "lib/game/definition/reelSets.js",
+    "lib/game/statistics/bonusSelectionStrategy.js",
+    "lib/game/scenes/scene.js"
+  ]
+}
