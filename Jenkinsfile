@@ -4,7 +4,7 @@ pipeline {
     
     environment {
          
-         JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print $2}'").trim()
+         JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}'").trim()
 
            }
     
