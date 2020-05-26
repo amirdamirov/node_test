@@ -5,7 +5,7 @@ pipeline {
     environment {
          
 // JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g'").trim()
-JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' | awk -F '/' '{print \$1}'").trim()           }
+JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' | awk -F \"/\" '{print \$1}'").trim()           }
     
     stages {
       stage ('Update Italy.json') {
