@@ -4,14 +4,13 @@ pipeline {
     
     environment {
          
-// JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g'").trim()
+JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g'").trim()
 //JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' | awk -F \\"/\\" '{print \$1}'").trim()           }
     
     stages {
       stage ('Update Italy.json') {
          when {expression { fileExists('italy.json')}}
          steps {
-            sh '''JSON_NAME=$(sed -n '2 p' package.json | awk '{print $2}' | sed 's/\,//g' | cut -d "/" -f2)'''
             sh "echo ${JSON_NAME}"       
  //sh "jq --arg newname "$(sed -n '2 p' package.json | awk '{print $2}' | sed 's/\"//g' | sed 's/\,//g' | cut -d "/" -f2)" '.name = $newname' italy.json > new-italy.json"
             
