@@ -10,13 +10,6 @@ JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{pr
   
     }
     stages {
-        stage ('Prapare value for the variable') {
-            steps {
-              sh "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' | sed 's/\"//g' > new"
-              sh "cat new"
-            }
-        }
-        
         stage ('Update Italy.json') {
            // environment {
            //    JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' new").trim()
