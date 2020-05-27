@@ -13,7 +13,10 @@ JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{pr
                 sh '''   
       
                    jq --arg newname "$JSON_NAME" '.name = $newname' italy.json > new-italy.json
-                   cat new-italy.json'''
+                   cat new-italy.json
+                   rm -rf italy.json
+                   mv new-italy.json italy.json
+                   '''
             
          
            }
