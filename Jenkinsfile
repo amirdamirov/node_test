@@ -11,7 +11,7 @@ JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{pr
             when {expression { fileExists('italy.json')}}
             steps {
                 sh '''echo ${JSON_NAME}"     
-                   jq --arg newname "${JSON_NAME}" '.name = $newname' italy.json > new-italy.json"
+                   jq --arg newname "$JSON_NAME" '.name = $newname' italy.json > new-italy.json"
                    cat new-italy.json'''
             
          
