@@ -12,7 +12,7 @@ JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' test").trim
     stages {
         stage ('Prapare value for the variable') {
             steps {
-              sh "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' > new"
+              sh "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' | sed 's/\"//g' > new"
               sh "cat new"
             }
         }
