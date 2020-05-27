@@ -2,13 +2,13 @@
 pipeline {
     agent any
     
-  //  environment {
+   environment {
          
 //JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g'").trim()
 //JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | awk -F '/' '{print \$2}' | sed 's/\\,//g'").trim()          
-//JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' test").trim()          
+JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' test").trim()          
   
-  //  }
+    }
     stages {
         stage ('Prapare value for the variable') {
             steps {
@@ -18,9 +18,9 @@ pipeline {
         }
         
         stage ('Update Italy.json') {
-            environment {
-               JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' new").trim()
-            }
+           // environment {
+           //    JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' new").trim()
+           // }
          when {expression { fileExists('italy.json')}}
          steps {
              sh "echo ${JSON_NAME}"     
