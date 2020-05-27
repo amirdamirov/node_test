@@ -13,6 +13,7 @@ pipeline {
         stage ('Prapare value for the variable') {
             steps {
               sh "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' > new"
+              sh "cat new"
             }
         }
         
