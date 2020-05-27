@@ -18,9 +18,12 @@ pipeline {
         }
         
         stage ('Update Italy.json') {
+            environment {
+               JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' new").trim()
+            }
          when {expression { fileExists('italy.json')}}
          steps {
-            sh "echo done"       
+             sh "echo ${JSON_NAME}"     
  //sh "jq --arg newname "$(sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g')" '.name = $newname' italy.json > new-italy.json"
  //sh "cat new-italy.json"
             
