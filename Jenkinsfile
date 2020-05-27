@@ -5,8 +5,8 @@ pipeline {
     environment {
          
 //JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g'").trim()
-//JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | sed 's/\\,//g' | awk -F '/' '{print \$2}'").trim()          
-JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' test").trim()          
+JSON_NAME = sh(returnStdout: true, script: "sed -n '2 p' package.json | awk '{print \$2}' | awk -F '/' '{print \$2}' | sed 's/\\,//g'").trim()          
+//JSON_NAME = sh(returnStdout: true, script: "awk -F '/' '{print \$2}' test").trim()          
   
     }
     stages {
