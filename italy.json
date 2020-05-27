@@ -1,5 +1,5 @@
 {
-  "name": "sw_chfi",
+  "name": "pipiska",
   "list": [
     "node_modules/@skywind-group/sw-slot-game-core/lib/skywind/slot/game.js",
     "node_modules/@skywind-group/sw-slot-game-core/lib/skywind/slot/rules/freespins.js",
