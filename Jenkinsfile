@@ -4,7 +4,7 @@ pipeline {
    environment {
          
 //JSON_NAME = sh(returnStdout: true, script: "echo '${JOB_NAME}' | awk -F '/' {'print $2'}").trim()
-  JSON_NAME = salam     
+  JSON_NAME = "salam"     
     }
     stages {
         stage ('Echo') {
