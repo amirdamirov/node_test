@@ -3,7 +3,7 @@ pipeline {
     
    environment {
          
-  JSON_NAME = sh(returnStdout: true, script: "echo '${env.JOB_NAME}' | awk -F '/' {'print $2'}").trim()
+  JSON_NAME = sh(returnStdout: true, script: "echo '${env.JOB_NAME}' | awk -F '/' {'print \$2'}").trim()
   PIPO = "salam"     
     }
     stages {
