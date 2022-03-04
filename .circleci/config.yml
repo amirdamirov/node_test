@@ -21,6 +21,10 @@ jobs:
             sudo apt-get install trivy
             sudo mkdir /imagesecreport
             sudo trivy image --no-progress --output /imagesecreport/scanning-report.txt nginx:latest
+      - store_artifacts:
+          path: /imagesecreport
+          destination: scanning-report.txt
+
   say-tello:
     docker:
       - image: cimg/base:stable
