@@ -19,7 +19,7 @@ jobs:
             echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
             sudo apt-get update
             sudo apt-get install trivy
-            mkdir /imagesecreport
+            sudo mkdir /imagesecreport
             sudo trivy image --no-progress --output /imagesecreport/scanning-report.txt nginx:latest
   say-tello:
     docker:
