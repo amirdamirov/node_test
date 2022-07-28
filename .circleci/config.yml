@@ -1,0 +1,42 @@
+version: 2.1
+
+orbs:
+  aws-ecr: circleci/aws-ecr@6.1.0
+
+jobs:
+  say-hello:
+    executor: aws-ecr/default
+    steps:
+      - checkout
+      - run:
+          name: "Pull docker image"
+          command: "docker pull nginx"
+      - run:
+          name: "Scan docker image"
+          command: |
+            sudo apt-get install wget apt-transport-https gnupg lsb-release
+            wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+            echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+            sudo apt-get update
+            sudo apt-get install trivy
+            sudo mkdir /imagesecreport
+            sudo trivy image --no-progress -format json --output /imagesecreport/scanning-report.txt nginx:latest
+      - store_artifacts:
+          path: /imagesecreport
+
+  say-tello:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: "echo Tello, World!"
+
+workflows:
+  say-hello-workflow:
+    jobs:
+      - say-hello
+      - say-tello:
+          requires:
+            - say-hello
