@@ -17,3 +17,10 @@ jobs:
     steps:
     - name: Build app
       run: echo "Building app"
+  
+  publish:
+     runs-on: ubuntu-latest
+     
+     steps:
+     - name: Publish artifact
+       run: echo "App has published"
